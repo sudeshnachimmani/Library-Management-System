@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Return Book</title>
+</head>
+<body>
+
+<h1>Return Book</h1>
+
+<form method="POST">
+
+    <label><b>Select Issued Book</b></label><br><br>
+
+    <select name="issue_id" required>
+        {% for issue in issued_books %}
+        <option value="{{ issue[0] }}">
+            Issue ID: {{ issue[0] }} |
+            Student: {{ issue[1] }} |
+            Roll No: {{ issue[2] }} |
+            Book: {{ issue[3] }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label><b>Return Date</b></label><br>
+
+    <input type="date" name="return_date" required>
+
+    <br><br>
+
+    <button type="submit">Return Book</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+
+</body>
+</html>

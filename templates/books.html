@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books</title>
+
+    <style>
+        table{
+            border-collapse:collapse;
+            width:80%;
+            margin:auto;
+        }
+
+        th,td{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        a{
+            text-decoration:none;
+            font-size:18px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Library Books</h1>
+<form method="GET" action="/books">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search by Book, Author or Category"
+        value="{{ search if search else '' }}">
+
+    <button type="submit">Search</button>
+
+    <a href="/books">Clear</a>
+
+</form>
+
+<br>
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Book Name</th>
+    <th>Author</th>
+    <th>Category</th>
+    <th>Quantity</th>
+    <th>Edit</th>
+    <th>Delete</th>
+</tr>
+
+{% for book in books %}
+
+<tr>
+
+<td>{{ book[0] }}</td>
+<td>{{ book[1] }}</td>
+<td>{{ book[2] }}</td>
+<td>{{ book[3] }}</td>
+<td>{{ book[4] }}</td>
+<td>
+    <a href="/edit_book/{{ book[0] }}">Edit</a>
+</td>
+
+<td>
+    <a href="{{ url_for('delete_book', id=book[0]) }}"
+   class="btn btn-danger">Delete</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<center>
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+    Back to Dashboard
+</a>
+</center>
+
+</body>
+</html>

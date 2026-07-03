@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue Book</title>
+</head>
+<body>
+
+<h1>Issue Book</h1>
+
+<form method="POST">
+
+<label>Select Student</label><br>
+
+<select name="student_id">
+
+{% for student in students %}
+
+<option value="{{ student[0] }}">
+{{ student[1] }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<br><br>
+
+<label>Select Book</label><br>
+
+<select name="book_id">
+
+{% for book in books %}
+
+<option value="{{ book[0] }}">
+{{ book[1] }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<br><br>
+
+<label>Issue Date</label><br>
+
+<input type="date" name="issue_date" required>
+
+<br><br>
+
+<button type="submit">
+Issue Book
+</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+    Back to Dashboard
+</a>
+
+</body>
+</html>

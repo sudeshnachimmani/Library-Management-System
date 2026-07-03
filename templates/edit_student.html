@@ -1,0 +1,20 @@
+<h2>Edit Student</h2>
+
+<form method="POST">
+
+  <input type="text" name="student_name" value="{{ student[1] }}" required>
+
+<input type="text" name="roll_no" value="{{ student[2] }}" required>
+
+<input type="text" name="department" value="{{ student[3] }}" required>
+
+<input type="text" name="year" value="{{ student[4] }}" required>
+
+<input type="text" name="phone" value="{{ student[5] }}" required>
+
+    <button type="submit">Update</button>
+
+</form>
+
+<br>
+<a href="/students">Back</a>
